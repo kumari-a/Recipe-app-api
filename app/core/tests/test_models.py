@@ -3,7 +3,6 @@ Test for models.
 """
 from django.test import TestCase
 from django.contrib.auth import get_user_model
-from django.urls import reverse
 
 class ModelTests(TestCase):
     def test_create_user_with_email_successful(self):
@@ -43,9 +42,4 @@ class ModelTests(TestCase):
         self.assertTrue(user.is_superuser)
         self.assertTrue(user.is_staff)
 
-    def test_edit_user_page(self):
-        """Test the edit user page works."""
-        url = reverse('admin:core_user_change', args=[self.user.id])
-        res = self.client.get(url)
 
-        self.assertEqual(res.status_code, 200)
